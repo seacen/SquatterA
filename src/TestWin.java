@@ -28,21 +28,34 @@ public class TestWin {
 			
 			for (int i=0;i<dimension;i++) {
 				
-				String line=input.readLine();
+				String line;
+				
+				//if all lines have been read when there should still be lines expecting
+				if ((line=input.readLine())==null) {
+					System.out.println("input is invalid, number of lines is less than the dimension number");
+					System.exit(0);
+				}
+				
+				/*the valid line length should be the number of cells suggested by the dimension(d)
+				plus the number of white spaces in between(d-1)*/
+				if (line.length()!=2*dimension-1) {
+					System.out.println("input is invalid, line length does not match with the dimension number.");
+					System.exit(0);
+				}
 				
 				//an integer indicates the current number of unclaimed captured cells
 				int capturedCount=0;
 				
 				//iterate through each of the cells in a row
 				for (int x=0;x<dimension;x++) {
-					char c=line.charAt(x);
+					char c=line.charAt(x*2);
 					if (c=='-') {
 						capturedCount++;
 					}
 					else if (c=='+') {
 						winState=false;
 					}
-					else {
+					else if (c=='B' || c=='W'){
 						if (c=='B') {
 							blackCaptured+=capturedCount;
 						}
@@ -51,9 +64,29 @@ public class TestWin {
 						}
 						capturedCount=0;
 					}
+					else if(c==' ') {
+						System.out.println("input is invalid, white places are not arranged correctly");
+						System.exit(0);
+					}
+					else {
+						System.out.println("input is invalid, no characters other than 'B','W','-','+' are allowed.");
+						System.exit(0);
+					}
+					//check if the character next to the cell is a white space
+					if (line.charAt(x*2+1)!=' ') {
+						System.out.println("input is invalid, a character is read when it should be a white space.");
+						System.exit(0);
+					}
 				}
 			}
 			
+			//if there is still more lines in input when dimension number of lines have already been read
+			if (input.readLine()!=null) {
+				System.out.println("input is invalid, number of lines is greater than the dimension number");
+				System.exit(0);
+			}
+			
+			//if no free cell has been detected
 			if (winState) {
 				if (blackCaptured>whiteCaptured) {
 					winPlayer="Black";
@@ -72,9 +105,14 @@ public class TestWin {
 			
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
+			System.out.println("first line input is incorrect, should be a number indicating the dimension.");
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			System.out.println("No input is passed.");
+			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("input is invalid.");
 			e.printStackTrace();
 		}
 	}
