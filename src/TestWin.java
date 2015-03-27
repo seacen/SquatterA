@@ -65,7 +65,7 @@ public class TestWin {
 						capturedCount=0;
 					}
 					else if(c==' ') {
-						System.out.println("input is invalid, white places are not arranged correctly");
+						System.out.println("input is invalid, white spaces are not arranged correctly");
 						System.exit(0);
 					}
 					else {
