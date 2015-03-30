@@ -1,3 +1,11 @@
+/*
+* name: Xichang Zhao
+* login_id: xichangz
+*
+* name: Xin He
+* login_id: hex1
+*/
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
