@@ -73,7 +73,7 @@ public class TestWin {
 						System.exit(0);
 					}
 					//check if the character next to the cell is a white space
-					if (line.charAt(x*2+1)!=' ') {
+					if (x!=(dimension-1) && line.charAt(x*2+1)!=' ') {
 						System.out.println("input is invalid, a character is read when it should be a white space.");
 						System.exit(0);
 					}
