@@ -114,14 +114,14 @@ public class TestWin {
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			System.out.println("first line input is incorrect, should be a number indicating the dimension.");
-			e.printStackTrace();
+            System.exit(0);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("No input is passed.");
-			e.printStackTrace();
+            System.exit(0);
 		} catch (Exception e) {
 			System.out.println("input is invalid.");
-			e.printStackTrace();
+            System.exit(0);
 		}
 	}
 	
