@@ -19,7 +19,7 @@ We exploited the fact that each input of `-` means that it must be an occupied s
     game_over = true                      // O(1)
 
     for dimension number of times         // O(n)
-      line < stdin_line                     // O(1)
+      line = stdin_line                     // O(1)
       captured = 0                          // O(1)
       for every non-space char in line      // O(n)
         if char == '-'                        // O(1)
