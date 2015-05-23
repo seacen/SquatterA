@@ -46,3 +46,10 @@ Temporary Items
 .idea/
 Squatter.iml
 out/
+
+# eclipse specific files
+bin/
+.settings/
+manifest.mf
+.project
+.classpath
